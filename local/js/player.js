@@ -9,8 +9,12 @@ function Player(id){
 	characters[this.id]["sprite"] = {};
 
  	characters[this.id]["sprite"] = game.add.sprite(0,0,'char');
- 	game.physics.enable(characters[this.id]["sprite"], Phaser.Physics.ARCADE);
-	characters[this.id]["sprite"].animations.add('run', [0,1,2,3,4,5,6,7], 12, true);
+
+ 	var sprite = characters[this.id]["sprite"];
+
+ 	game.physics.enable(sprite, Phaser.Physics.ARCADE);
+	sprite.animations.add('run', [0,1,2,3,4,5,6,7], 12, true);
+	sprite.body.collideWorldBounds = true;
 }
 
 Player.prototype.run = function(){
@@ -18,17 +22,33 @@ Player.prototype.run = function(){
 }
 
 Player.prototype.move = function(x){
-	if(x >= 0)
-		characters[this.id]["sprite"].play("run");
-	else
-		characters[this.id]["sprite"].play("run");
+	var sprite = characters[this.id]["sprite"];
+	if(x != 0){
+		if(x > 0)
+			sprite.play("run");
+		else
+			sprite.play("run");
 
-	//console.log(Math.floor(this.maxVelocity*x));
-	console.log(x);
-	characters[this.id]["sprite"].body.velocity.x = Math.floor(this.maxVelocity*x);
+		//console.log(Math.floor(this.maxVelocity*x));
+		console.log(x);
+		sprite.body.velocity.x = Math.floor(this.maxVelocity*x);
+	}else{
+		sprite.animations.stop();
+		sprite.frame = 0;
+		sprite.body.velocity.x = 0;
+	}
+}
+
+Player.prototype.jump = function(){
+	var sprite = characters[this.id]["sprite"];
+	if(sprite.body.velocity.y == 0){
+		sprite.body.velocity.y = -150;
+	}
+	
 }
 
 Player.prototype.remove = function(){
+	characters[this.id]["sprite"].destroy();
 	delete characters[this.id]["sprite"];
 }
 

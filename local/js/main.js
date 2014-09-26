@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1920, 1080, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
  
 function preload() {
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
@@ -8,6 +8,7 @@ function preload() {
  
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.physics.arcade.gravity.y = 100;
 
 	// var hej = new Player("AskiaSonghai");
 

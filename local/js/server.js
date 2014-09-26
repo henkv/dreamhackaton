@@ -19,18 +19,17 @@ io.on("connection", function(socket) {
 	var ch = new Player(id);
 
 	socket.on("pad", function(x, y) {
-
 		ch.move(x);
 	})
 
 	socket.on("jump", function() {
-		console.log(id, "jump")
+		ch.jump();
 	})
 	socket.on("attack", function() {
 		console.log(id, "attacked")
 	})
 
 	socket.on("disconnect", function() {
-		console.log(id, "disconnect")
+		ch.remove();
 	})
 });
