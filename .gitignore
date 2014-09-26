@@ -51,3 +51,4 @@ node_modules
 
 #nodewebkit
 node-webkit-v0.10.5-win-ia32
+node-webkit-v0.10.5-linux-x64
