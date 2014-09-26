@@ -1,0 +1,59 @@
+body {
+	margin: 0;
+	background: #222;
+	overflow: hidden;
+}
+
+#turnPhone {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: #222;
+	color: #fff;
+	font-size: 10vh;
+}
+
+#pad {
+	width: 100vh;
+	height: 100vh;
+	border-radius: 50%;
+	background: repeating-radial-gradient(
+		circle,
+		#666 0%,
+		#333 100%
+	);
+}
+
+#buttons {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#buttons > div {
+	width: 50vh;
+	height: 50vh;
+	border-radius: 50%;
+}
+#a {
+	background: repeating-radial-gradient(
+		circle,
+		#2d4 0%,
+		#1b3 100%
+	);
+}
+#b {
+	background: repeating-radial-gradient(
+		circle,
+		#d22 0%,
+		#b11 100%
+	);
+}
+
+@media screen and (orientation:portrait) {
+	#turnPhone {
+		display: block;
+	}
+}

@@ -16,6 +16,10 @@ io.on("connection", function(socket) {
 	var id = makeId();
 	console.log(id, "connected");
 
+	socket.on("pad", function(x, y) {
+		console.log(id, x, y);
+	})
+
 	socket.on("jump", function() {
 		console.log(id, "jump")
 	})
