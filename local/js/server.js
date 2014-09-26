@@ -16,8 +16,11 @@ io.on("connection", function(socket) {
 	var id = makeId();
 	console.log(id, "connected");
 
+	var ch = new Player(id);
+
 	socket.on("pad", function(x, y) {
-		console.log(id, x, y);
+
+		ch.move(x);
 	})
 
 	socket.on("jump", function() {
