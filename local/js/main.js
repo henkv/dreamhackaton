@@ -10,6 +10,7 @@ function preload() {
  
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
+	//game.physics.setImpactEvents(true);
 	game.physics.arcade.gravity.y = 100;
 
 	// var hej = new Player("AskiaSonghai");

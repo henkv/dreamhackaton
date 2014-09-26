@@ -15,6 +15,7 @@ function Player(id){
  	game.physics.enable(sprite, Phaser.Physics.ARCADE);
 	sprite.animations.add('run', [0,1,2,3,4,5,6,7], 12, true);
 	sprite.body.collideWorldBounds = true;
+	sprite.body.bounce.setTo(1, 1);
 }
 
 Player.prototype.run = function(){
@@ -43,8 +44,7 @@ Player.prototype.jump = function(){
 	var sprite = characters[this.id]["sprite"];
 	if(sprite.body.velocity.y == 0){
 		sprite.body.velocity.y = -150;
-	}
-	
+	} 
 }
 
 Player.prototype.remove = function(){
