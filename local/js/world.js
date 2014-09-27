@@ -18,15 +18,14 @@ world.create = function() {
 
 	map = game.add.tilemap('map');
 
-	map.body.position.y += 256;
 	map.addTilesetImage("AllGroundTiles", "tiles");
 
 	map.setCollisionBetween(0, 10);
 
-	layer.pilars3 =map.createLayer("plat3");
-	layer.pilars2 =map.createLayer("plat2");
-	layer.pilars = map.createLayer("plat1");
-	layer.ground = map.createLayer("ground");
+	layer.pilars3 =map.createLayer("Plat3");
+	layer.pilars2 =map.createLayer("Plat2");
+	layer.pilars = map.createLayer("Plat1");
+	layer.ground = map.createLayer("Ground");
 
 	//layer = map.createLayer(0);
 	map.setCollisionBetween(0, 10);
