@@ -9,17 +9,17 @@ function Player(id){
 	characters[this.id] = {};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
- 	characters[this.id]["sprite"] = players.create(0,0,'char');
+ 	characters[this.id]["sprite"] = game.add.sprite(0,0,'char');
 
  	var sprite = characters[this.id]["sprite"];
 
  	game.physics.enable(sprite, Phaser.Physics.ARCADE);
-	sprite.animations.add('runFast', [0,1,2,3,4,5,6,7], 16, true);
-	sprite.animations.add('runSlow', [0,1,2,3,4,5,6,7], 8, true);
+	//sprite.animations.add('runFast', [0,1,2,3,4,5,6,7], 16, true);
+	//sprite.animations.add('runSlow', [0,1,2,3,4,5,6,7], 8, true);
 	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
 
-	sprite.animations.add('runFastLeft', [7,6,5,4,3,2,1,0], 16, true);
-	sprite.animations.add('runSlowLeft', [7,6,5,4,3,2,1,0], 8, true);
+	//sprite.animations.add('runFastLeft', [7,6,5,4,3,2,1,0], 16, true);
+	//sprite.animations.add('runSlowLeft', [7,6,5,4,3,2,1,0], 8, true);
 	sprite.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true);
 	sprite.body.collideWorldBounds = true;
 }
@@ -31,22 +31,38 @@ Player.prototype.run = function(){
 Player.prototype.move = function(x){
 	var sprite = characters[this.id]["sprite"];
 	if(x != 0){
-		if(x > 0)
-			if(Math.abs(x) < 0.5){
-				sprite.play("runSlow");
-			}else if(Math.abs(x) < 0.75){
-				sprite.play("runMedium");
-			}else{
-				sprite.play("runFast");
+		if(x > 0){
+			if(!this.facing){
+				sprite.loadTexture('char', 0, false);
+				this.facing = !this.facing;
 			}
-		else
-			if(Math.abs(x) < 0.5){
-				sprite.play("runSlowLeft");
-			}else if(Math.abs(x) < 0.75){
-				sprite.play("runMediumLeft");
-			}else{
-				sprite.play("runFastLeft");
+
+			sprite.play("runMedium");
+
+			// if(Math.abs(x) < 0.5){
+			// 	sprite.play("runSlow");
+			// }else if(Math.abs(x) < 0.75){
+				
+			// }else{
+			// 	sprite.play("runFast");
+			// }
+		}	
+		else{
+			if(this.facing){
+				sprite.loadTexture('charLeft', 0, false);
+				this.facing = !this.facing;
 			}
+
+			sprite.play("runMediumLeft");
+
+			// if(Math.abs(x) < 0.5){
+			// 	sprite.play("runSlowLeft");
+			// }else if(Math.abs(x) < 0.75){
+				
+			// }else{
+			// 	sprite.play("runFastLeft");
+			// }
+		}
 
 		//console.log(Math.floor(this.maxVelocity*x));
 		console.log(x);

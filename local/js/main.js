@@ -3,7 +3,7 @@ var players;
  
 function preload() {
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
-	game.load.spritesheet('char', 'assets/Run_left.png',200,200,8);
+	game.load.spritesheet('charLeft', 'assets/Run_left.png',200,200,8);
 	
 	world.preload();
 }
