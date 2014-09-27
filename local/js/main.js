@@ -31,7 +31,7 @@ function create() {
 }
  
 function update() {
-	game.physics.arcade.collide(players, platforms);
+	//game.physics.arcade.collide(players);
 
 	for(c in characters){
 		var x = characters[c]["sprite"].position.x;
