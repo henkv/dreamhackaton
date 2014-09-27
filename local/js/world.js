@@ -26,7 +26,8 @@ var world = {
 		this.map.addTilesetImage("GroundTileBigEnd1", "GroundTileBigEnd1");
 		this.map.addTilesetImage("GroundTileBigEnd2", "GroundTileBigEnd2");
 
-
+		this.layers.pilars3 = this.map.createLayer("Pilars3");
+		this.layers.pilars2 = this.map.createLayer("Pilars2");
 		this.layers.pilars = this.map.createLayer("Pilars");
 		this.layers.ground = this.map.createLayer("Ground");
 		
