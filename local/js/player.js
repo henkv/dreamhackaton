@@ -73,8 +73,8 @@ player.smash = function(id) {
 	var reach = 5;
 
 	if ( this.facing[id] === "right" ) {
-		var DZS = x + width/2;
-		var DZE = x + width/2;
+		var DZS = x + width;
+		var DZE = x + width;
 
 		for (var key in this.group) {
 			var val = this.group[key];
@@ -87,14 +87,37 @@ player.smash = function(id) {
 			var TZS = tX;
 			var TZE = tX + tWidth;
 
-			if (DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
-				val.body.velocity.x = 1000;
+			if (key !== id && DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
+				this.group[key].body.velocity.x = 1000;
 			}
 
 		}
 
 	}
 
+
+	if ( this.facing[id] === "left" ) {
+		var DZS = x;
+		var DZE = x;
+
+		for (var key in this.group) {
+			var val = this.group[key];
+			var tX = val.body.x;
+			var tY = val.body.y;
+
+			var tWidth = val.body.width;
+			var tHeight = val.body.height;
+
+			var TZS = tX;
+			var TZE = tX + tWidth;
+
+			if (key !== id && DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
+				val.body.velocity.x = -1000;
+			}
+
+		}
+
+	}
 	
 	
 
