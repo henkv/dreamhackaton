@@ -22,6 +22,7 @@ player.make = function(id) {
     p.body.bounce.y = 0.2;
     p.body.linearDamping = 1;
     p.body.collideWorldBounds = true;
+    p.body.checkCollision.up = false;
 
 	this.group[id] = p;
 
