@@ -9,7 +9,6 @@ function Player(id, name){
 
 	characters[this.id] = {
 		running: false,
-		disableInput: false
 	};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
@@ -122,11 +121,6 @@ Player.prototype.smash = function(){
 			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
 				characters[c].sprite.body.velocity.x = 1e3;
-				characters[c].disableInput = true;
-				setTimeout(function() {
-					var cc = c;
-					characters[cc].disableInput = false;
-				}, 1000);
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
