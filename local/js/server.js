@@ -30,7 +30,7 @@ io.on("connection", function(socket) {
 		ch.jump();
 	})
 	socket.on("attack", function() {
-		console.log(id, "attacked")
+		ch.smash();
 	})
 
 	socket.on("disconnect", function() {
