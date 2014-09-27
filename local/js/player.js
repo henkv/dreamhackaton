@@ -23,7 +23,7 @@ function Player(id, name){
  	
  	var sprite = characters[this.id]["sprite"];
 
- 	game.physics.enable(sprite, Phaser.Physics.ARCADE);
+ 	game.physics.enable(sprite);
 
 	sprite.animations.add('idle', [0,1,2,3], 2, true);
 	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
@@ -143,9 +143,7 @@ Player.prototype.smash = function(){
 
 		var DZS = x + inset;
 		var DZE = x + inset;
-
-		var VDS = y;
-		var VDE = y + height;
+ 
 
 		for(c in characters){
 			var val = characters[c];
