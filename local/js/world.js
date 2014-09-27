@@ -16,8 +16,6 @@ var world = {
 	create: function() {
 		this.bg = game.add.sprite(0,0,"sky");
 
-		
-		
 		this.map = game.add.tilemap("map");
 		this.map.addTilesetImage("GroundTileA", "GroundTileA");
 		this.map.addTilesetImage("GroundTileB", "GroundTileB");
@@ -31,27 +29,42 @@ var world = {
 		this.layers.pilars = this.map.createLayer("Pilars");
 		this.layers.ground = this.map.createLayer("Ground");
 		
+		this.layers.pilars3.enableBody = true;
+ 		this.layers.pilars2.enableBody = true;
+ 		this.layers.pilars.enableBody = true;
+ 		this.layers.ground.enableBody = true;
 
+ 		this.layers.pilars3.debug = true;
+ 		this.layers.pilars2.debug = true;
+ 		this.layers.pilars.debug = true;
+ 		this.layers.ground.debug = true;
 
-		this.layers.ground.resizeWorld();
+		game.physics.arcade.enable(this.layers.pilars3, Phaser.Physics.ARCADE, true);
+		game.physics.arcade.enable(this.layers.pilars2, Phaser.Physics.ARCADE, true);
+		game.physics.arcade.enable(this.layers.pilars, Phaser.Physics.ARCADE, true);
+		game.physics.arcade.enable(this.layers.ground, Phaser.Physics.ARCADE, true);
+
+		
+		this.layers.pilars3.resizeWorld();
+		this.layers.pilars2.resizeWorld();
 		this.layers.pilars.resizeWorld();
-
-
+		this.layers.ground.resizeWorld();
+		
 
 	},
 	update: function(id) {
 		
 		var Sprite = characters[id].sprite;
 		var yPos = Sprite.body.position.y + 200;
-		
+	game.physics.arcade.collide(Sprite, world.layers.ground);
 
-		if(yPos < world.layers.pilars3.position.y) {
+		if(yPos < 200) {
 			game.physics.arcade.collide(Sprite, world.layers.pilars3);
 
-		} else if (yPos < world.layers.pilars2.position.y) {
+		} else if (yPos < 400) {
 			game.physics.arcade.collide(Sprite, world.layers.pilars2);
 
-		}  else if (yPos < world.layers.pilars.position.y) {
+		}  else if (yPos < 800) {
 			game.physics.arcade.collide(Sprite, world.layers.pilars1);
 
 		} else {
