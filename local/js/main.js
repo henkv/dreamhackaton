@@ -1,5 +1,5 @@
-var game = new Phaser.Game(1920, 1080, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-var players, platforms;
+var game = new Phaser.Game(1920, 1080, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+var players, layers;
  
 function preload() {
 	
@@ -18,7 +18,9 @@ function create() {
 	//game.physics.arcade.collide('char', sprite2, collisionHandler, null, this);
 	game.physics.arcade.gravity.y = 2000;
 
+	layers = game.add.group();
 	world.create();
+	game.physics.enable
 
 	// hej.move();
 
@@ -36,6 +38,8 @@ function create() {
  
 function update() {
 
+	game.physics.arcade.collide(players, world.layers.ground);
+
 	for(c in characters){
 		var x = characters[c]["sprite"].position.x;
 		var y = characters[c]["sprite"].position.y;
@@ -46,8 +50,15 @@ function update() {
 		characters[c]["name"].position.y = y-20;
 		friction(c);
 
-		world.update(c);
 	}
 
 
+	world.update();
+}
+
+function render () {
+	for(c in characters){ 
+		game.debug.body(characters[c].sprite);
+
+	}
 }

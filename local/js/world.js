@@ -19,37 +19,38 @@ var world = {
 		this.map = game.add.tilemap("map");
 		this.map.addTilesetImage("AllGroundTiles", "AllGroundTiles");
 
-		this.map.setCollisionBetween(1,1000);
+		this.map.setCollisionBetween(1,10);
 
-		this.layers.pilars3 = this.map.createLayer("Pilars3");
-		this.layers.pilars2 = this.map.createLayer("Pilars2");
-		this.layers.pilars = this.map.createLayer("Pilars");
-		this.layers.ground = this.map.createLayer("Ground");
+		//this.layers.pilars3 = this.map.createLayer("plat3");
+	//	this.layers.pilars2 = this.map.createLayer("plat2");
+	//	this.layers.pilars = this.map.createLayer("plat1");
+		this.layers.ground = this.map.createLayer("ground");
 
 		this.layers.ground.resizeWorld();
 
-		this.layers.pilars3.enableBody = true;
- 		this.layers.pilars2.enableBody = true;
- 		this.layers.pilars.enableBody = true;
+//		this.layers.pilars3.enableBody = true;
+ //		this.layers.pilars2.enableBody = true;
+ 	//	this.layers.pilars.enableBody = true;
  		this.layers.ground.enableBody = true;
 
- 		this.layers.pilars3.debug = true;
+ 		/*this.layers.pilars3.debug = true;
  		this.layers.pilars2.debug = true;
  		this.layers.pilars.debug = true;
  		this.layers.ground.debug = true;
+*/
+ 		game.physics.arcade.enable(this.layers.ground, Phaser.Physics.ARCADE, true);
+
+
+ 		console.log(this.map.collideIndexes);
+ 		//layers.add(this.layers.ground);
 
 		
 	
 
 	},
-	update: function(id) {
+	update: function() {
 		
-		var Sprite = characters[id].sprite;
-		var yPos = Sprite.body.position.y + 200;
-		
-
-		game.physics.arcade.collide(Sprite, world.layers.ground, world.layers.pilars3, world.layers.pilars1,world.layers.pilars2);
-
+	
 
 		/*
 		if(yPos < 200) {
