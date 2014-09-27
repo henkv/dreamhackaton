@@ -17,6 +17,10 @@ function Player(id){
 	sprite.animations.add('runFast', [0,1,2,3,4,5,6,7], 16, true);
 	sprite.animations.add('runSlow', [0,1,2,3,4,5,6,7], 8, true);
 	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
+
+	sprite.animations.add('runFastLeft', [7,6,5,4,3,2,1,0], 16, true);
+	sprite.animations.add('runSlowLeft', [7,6,5,4,3,2,1,0], 8, true);
+	sprite.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true);
 	sprite.body.collideWorldBounds = true;
 }
 
@@ -36,7 +40,13 @@ Player.prototype.move = function(x){
 				sprite.play("runFast");
 			}
 		else
-			sprite.play("run");
+			if(Math.abs(x) < 0.5){
+				sprite.play("runSlowLeft");
+			}else if(Math.abs(x) < 0.75){
+				sprite.play("runMediumLeft");
+			}else{
+				sprite.play("runFastLeft");
+			}
 
 		//console.log(Math.floor(this.maxVelocity*x));
 		console.log(x);
