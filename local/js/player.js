@@ -24,8 +24,8 @@ player.make = function(id) {
 	p.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true); 
 	p.animations.add('punchRight',[0,1,2,3], 12, true);
 	p.animations.add('punchLeft',[3,2,1,0], 12, true);
-	p.animations.add('jumpRight',[3,2,1,0], 12, true);
-	p.animations.add('jumpLeft',[3,2,1,0], 12, true);
+	p.animations.add('jumpRight',[0], 1, true);
+	p.animations.add('jumpLeft',[0], 1, true);
 
     game.physics.enable(p);
 
@@ -50,15 +50,15 @@ player.jump = function(id) {
 	}
 
 	if(this.facing[id]=="right"){
-		sprite.loadTexture('charRunRight', 0, false);
+		sprite.loadTexture('jumpRight', 0, false);
 		this.facing[id] = "right";
-		sprite.play("punchRight");
+		sprite.play("charRunRight");
 	}else{
 		if(this.facing[id]=="left"){
-			sprite.loadTexture('charPunchLeft', 0, false);
+			sprite.loadTexture('jumpLeft', 0, false);
 			this.facing[id]="left";
 		}
-		sprite.play("punchLeft");
+		sprite.play("charRunLeft");
 	}
 }
 
