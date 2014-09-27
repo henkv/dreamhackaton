@@ -12,8 +12,6 @@ var map;
 var tileset;
 var bg;
 var layer;
-var cursors;
-var player;
 
 world.create = function() {
 	bg = game.add.sprite(0,0,"sky");
@@ -25,7 +23,9 @@ world.create = function() {
 	map.setCollisionBetween(0, 10);
 
 	layer = map.createLayer(0);
+	map.setCollisionBetween(0, 10);
 
+	layer.debug = true;
 	layer.resizeWorld();
 
 }
