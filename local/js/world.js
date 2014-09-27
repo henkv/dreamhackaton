@@ -1,7 +1,7 @@
 var world = {};
  
 world.preload = function() {
-	game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.CSV)
+	game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.JSON)
 	game.load.image('tiles', 'assets/AllGroundTiles.png');
 	game.load.image('sky', "assets/Sky.png");	
 }
