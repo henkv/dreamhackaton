@@ -1,20 +1,27 @@
 var characters = {}
 
-function Player(id){
+function Player(id, name){
 
 	this.id = id;
 	this.facing = true;
-	this.maxVelocity = 450;
+	this.maxVelocity = 750;
 
 	characters[this.id] = {};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
-	console.log(players);
+
+	var style = { font: "20px Arial", fill: "#000000", align: "center" };
+
+    characters[this.id]["name"] = game.add.text(0, 0, name, style);
+    console.log(characters[this.id]["name"]);
+    characters[this.id]["name"].anchor.set(0.5);
+
 	characters[this.id]["sprite"] = players.create(0,0,'char');
  	
  	var sprite = characters[this.id]["sprite"];
 
  	game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
 	//sprite.animations.add('runFast', [0,1,2,3,4,5,6,7], 16, true);
 	//sprite.animations.add('runSlow', [0,1,2,3,4,5,6,7], 8, true);
 	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
@@ -78,7 +85,7 @@ Player.prototype.move = function(x){
 Player.prototype.jump = function(){
 	var sprite = characters[this.id]["sprite"];
 	if(sprite.body.velocity.y == 0){
-		sprite.body.velocity.y = -150;
+		sprite.body.velocity.y = -1000;
 	} 
 }
 

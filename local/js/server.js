@@ -20,7 +20,7 @@ io.on("connection", function(socket) {
 	var id = makeId();
 	console.log(id, "connected");
 
-	var ch = new Player(id);
+	var ch = new Player(id, "Chefren");
 
 	socket.on("pad", function(x, y) {
 		ch.move(x);
