@@ -1,3 +1,7 @@
+function createServer() {
+	
+
+
 var express = require("express");
 var app = express();
 var server = require("http").createServer(app);
@@ -10,7 +14,7 @@ console.log("serverUp");
 
 function makeId () {
   return Math.random().toString(36).substr(2, 6);
-};
+}
 
 io.on("connection", function(socket) {
 	var id = makeId();
@@ -33,3 +37,6 @@ io.on("connection", function(socket) {
 		ch.remove();
 	})
 });
+
+
+}
