@@ -6,6 +6,11 @@ var world = {
 		game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.TILED_JSON)
 		game.load.image('tiles', 'assets/AllGroundTiles.png');
 		
+		game.load.image('Cloud1', 'assets/Cloud1.png');
+		game.load.image('Cloud2', 'assets/Cloud2.png');
+		game.load.image('Cloud3', 'assets/Cloud3.png');
+		game.load.image('Cloud4', 'assets/Cloud4.png');
+
 		game.load.image('sky', "assets/Sky.png");	
 	},
 	create: function() {
@@ -63,5 +68,20 @@ var world = {
 			game.physics.arcade.collide(Sprite, world.layers.ground);
 
 		}*/
+	},
+
+	clouds: function() {
+
+		/*// ta tiden, få när det sista molnet skapads och vänta en viss tid 
+		var image = game.add.sprite(0, 0, 'Cloud1');
+		game.physics.enable(image, Phaser.Physics.ARCADE);
+		image.body.velocity.x = 100;
+
+		if( () ) {
+
+		} */
+
 	}
+
+
 };

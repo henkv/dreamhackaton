@@ -6,6 +6,10 @@ function preload() {
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
 	game.load.spritesheet('charIdle', 'assets/Idle.png',200,200,4);
 	game.load.spritesheet('charLeft', 'assets/Run_left.png',200,200,8);
+	game.load.spritesheet('charJump', 'assets/Jump.png',200,200,5);
+	game.load.spritesheet('charJumpLeft', 'assets/Jump_left.png',200,200,5);
+	game.load.spritesheet('charPunch', 'assets/Punch.png',200,200,4);
+	game.load.spritesheet('charPunchLeft', 'assets/Punch_left.png',200,200,4);
 	
 	world.preload();
 }

@@ -24,9 +24,15 @@ function Player(id, name){
 
  	game.physics.enable(characters[this.id]["sprite"]);
 
+
 	characters[this.id]["sprite"].animations.add('idle', [0,1,2,3], 2, true);
 	characters[this.id]["sprite"].animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
 	characters[this.id]["sprite"].animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true);
+	characters[this.id]["sprite"].animations.add('punch',[0,1,2,3], 12, true);
+	characters[this.id]["sprite"].animations.add('punchLeft',[3,2,1,0], 12, true);
+	characters[this.id]["sprite"].animations.add('jump', [0,1,2,3], 12, false);
+	characters[this.id]["sprite"].animations.add('jumpLeft', [3,2,1,0], 12, false);
+
 
 	characters[this.id]["sprite"].body.collideWorldBounds = true;
 
@@ -51,42 +57,86 @@ Player.prototype.run = function(){
 
 Player.prototype.move = function(x){
 	var sprite = characters[this.id]["sprite"];
-	if (characters[this.id].disableInput) {
-		return;
-	}
-	if(x != 0){
-		characters[this.id].running = true;
-		if(x > 0){
+	var y = sprite.body.velocity.y;
+	var xVel = sprite.body.velocity.x;
+
+	if(y == 0) {
+		if (characters[this.id].disableInput) {
+			return;
+		}
+		if(x != 0){
+			characters[this.id].running = true;
+			if(x > 0){
+				if(!this.facing){
+					sprite.loadTexture('char', 0, false);
+					this.facing = !this.facing;
+				}
+
+				sprite.play("runMedium");
+			}	
+			else{
+				if(this.facing){
+					sprite.loadTexture('charLeft', 0, false);
+					this.facing = !this.facing;
+				}
+
+				sprite.play("runMediumLeft");
+			}
+
+			sprite.body.velocity.x = Math.floor(this.maxVelocity*x);
+		}else{
+			characters[this.id].running = false;
+			sprite.loadTexture('charIdle', 0, false);
+			sprite.play("idle");
+			this.facing = true;
+		}
+	} else {		
+		characters[this.id].running = false;
+
+		if(-xVel < 0){
 			if(!this.facing){
-				sprite.loadTexture('char', 0, false);
+				sprite.loadTexture('charJump', 0, false);
 				this.facing = !this.facing;
 			}
 
-			sprite.play("runMedium");
+			sprite.play("jump");
 		}	
 		else{
 			if(this.facing){
-				sprite.loadTexture('charLeft', 0, false);
+				sprite.loadTexture('charJumpLeft', 0, false);
 				this.facing = !this.facing;
 			}
 
-			sprite.play("runMediumLeft");
+			sprite.play("jumpLeft");
 		}
-
-		sprite.body.velocity.x = Math.floor(this.maxVelocity*x);
-	}else{
-		characters[this.id].running = false;
-		sprite.loadTexture('charIdle', 0, false);
-		sprite.play("idle");
-		this.facing = true;
 	}
 }
 
 Player.prototype.jump = function(){
 	var sprite = characters[this.id]["sprite"];
+	var x = sprite.body.velocity.x;
+
 	if(sprite.body.velocity.y == 0){
 		sprite.body.velocity.y = -1000;
 	} 
+/*
+	if(x > 0){
+		if(!this.facing){
+			sprite.loadTexture('charJump', 0, false);	
+			this.facing = !this.facing;
+		}
+
+		sprite.play("jump");
+	}	
+	else{
+		if(this.facing){
+			sprite.loadTexture('charJumpLeft', 0, false);	
+			this.facing = !this.facing;
+		}
+
+		sprite.play("jumpLeft");
+	} */
+	
 }
 
 Player.prototype.remove = function(){
@@ -98,6 +148,8 @@ Player.prototype.remove = function(){
 Player.prototype.smash = function(){
 
 	console.log(characters[this.id]["name"]["text"] + " SMASH");
+	sprite.loadTexture('charPunch', 0, false);	
+	sprite.play("punch");
 
 	var sprite = characters[this.id]["sprite"];
 	var x = sprite.position.x;
