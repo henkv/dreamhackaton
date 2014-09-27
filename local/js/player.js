@@ -32,10 +32,15 @@ function Player(id, name){
 	sprite.body.collideWorldBounds = true;
 
 	sprite.body.width = 130;
+	sprite.body.checkCollision.up = false;
+	sprite.body.enable = true;
+	sprite.body.offset = new Phaser.Point(35,0)
 	//	console.log(sprite.body.width);
 
 	sprite.loadTexture('charIdle', 0, false);
 	sprite.play("idle");
+
+	characters[this.id]["sprite"] = sprite;
 }
 
 Player.prototype.run = function(){
