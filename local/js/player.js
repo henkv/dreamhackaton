@@ -6,10 +6,11 @@ function Player(id){
 	this.id = id;
 	this.facing = true;
 	this.maxVelocity = 450;
-	
+
 	characters[this.id] = {};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
+	console.log(players);
 	characters[this.id]["sprite"] = players.create(0,0,'char');
  	
  	var sprite = characters[this.id]["sprite"];
