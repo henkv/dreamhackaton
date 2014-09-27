@@ -5,8 +5,8 @@ player.preload = function() {
 	game.load.spritesheet('charRunLeft', 'assets/Run_left.png',200,200,8);
 	game.load.spritesheet('charIdleRight', 'assets/Idle.png',200,200,4);
 	game.load.spritesheet('charIdleLeft', 'assets/Idle_left.png',200,200,4);
-	game.load.spritesheet('charPunchRight', 'assets/Run.png',200,200,8);
-	game.load.spritesheet('charPunchLeft', 'assets/Run_left.png',200,200,8);
+	game.load.spritesheet('charPunchRight', 'assets/Punch.png',200,200,4);
+	game.load.spritesheet('charPunchLeft', 'assets/Punch_left.png',200,200,4);
 }
 
 player.group = {};
@@ -22,8 +22,8 @@ player.make = function(id) {
 	p.animations.add('charIdleLeft', [0,1,2,3], 2, true);
 	p.animations.add('runMediumRight', [0,1,2,3,4,5,6,7], 12, true);
 	p.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true); 
-	p.animations.add('punchRight',[0,1,2,3], 12, true);
-	p.animations.add('punchLeft',[3,2,1,0], 12, true);
+	p.animations.add('punchRight',[0,1,2,3], 8, true);
+	p.animations.add('punchLeft',[0,1,2,3], 8, true);
 	p.animations.add('jumpRight',[0], 1, true);
 	p.animations.add('jumpLeft',[0], 1, true);
 
@@ -118,9 +118,6 @@ player.smash = function(id) {
 		}
 
 	}
-	
-	
-
 
 	if(this.facing[id]=="right"){
 		sprite.loadTexture('charPunchRight', 0, false);		

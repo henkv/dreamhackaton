@@ -30,7 +30,7 @@ function create() {
 	var text = "IP: 77.80.130.53";
     var style = { font: "65px Arial", fill: "#ffffff", align: "center" };
 
-    var t = game.add.text(game.world.centerX, 0, text, style);
+    var t = game.add.text(20, 0, text, style);
 
 	game.input.onDown.add(gofull, this);
 }
