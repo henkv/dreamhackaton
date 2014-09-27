@@ -57,6 +57,24 @@ player.smash = function(id) {
 	var height = sprite.body.height;
 	var reach = 5;
 
+	console.log(x,y,width,height);
+
+
+	if ( this.facing[id] === "right" ) {
+		var DZS = x + width/2;
+		var DZE = x + width/2;
+
+		for (var key in this.group) {
+			var val = this.group[key];
+			var tX = val.body.x;
+
+			var TZS;
+
+		}
+
+	}
+
+
 
 	if(this.facing[id]=="right"){
 		sprite.loadTexture('charPunchRight', 0, false);

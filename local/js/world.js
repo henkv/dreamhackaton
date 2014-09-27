@@ -18,7 +18,6 @@ world.create = function() {
 
 	map = game.add.tilemap('map');
 
-	map.body.position.y += 256;
 	map.addTilesetImage("AllGroundTiles", "tiles");
 
 	map.setCollisionBetween(0, 10);
