@@ -31,10 +31,32 @@ var world = {
 		this.layers.pilars = this.map.createLayer("Pilars");
 		this.layers.ground = this.map.createLayer("Ground");
 		
+
+
 		this.layers.ground.resizeWorld();
 		this.layers.pilars.resizeWorld();
 
 
 
+	},
+	update: function(id) {
+		
+		var Sprite = characters[id].sprite;
+		var yPos = Sprite.body.position.y + 200;
+		
+
+		if(yPos < world.layers.pilars3.position.y) {
+			game.physics.arcade.collide(Sprite, world.layers.pilars3);
+
+		} else if (yPos < world.layers.pilars2.position.y) {
+			game.physics.arcade.collide(Sprite, world.layers.pilars2);
+
+		}  else if (yPos < world.layers.pilars.position.y) {
+			game.physics.arcade.collide(Sprite, world.layers.pilars1);
+
+		} else {
+			game.physics.arcade.collide(Sprite, world.layers.ground);
+
+		}
 	}
 };
