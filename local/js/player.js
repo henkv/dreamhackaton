@@ -100,8 +100,8 @@ Player.prototype.smash = function(){
 
 	if(this.facing){
 
-		var DZS = x+inset+body;
-		var DZE = x+inset*1.1+body;
+		var DZS = x + inset + body;
+		var DZE = x + inset * 1.1 + body;
 		
 		for(c in characters){
 			var val = characters[c];
@@ -109,8 +109,8 @@ Player.prototype.smash = function(){
 			var cX = val.sprite.x;
 			var cY = val.sprite.y;
 
-			var TZS = cX+inset;
-			var TZE = cX+inset+body; 
+			var TZS = cX + inset;
+			var TZE = cX + inset + body; 
 
 			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
