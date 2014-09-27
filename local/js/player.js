@@ -9,7 +9,6 @@ function Player(id, name){
 
 	characters[this.id] = {
 		running: false,
-		disableInput: false
 	};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
@@ -109,7 +108,10 @@ Player.prototype.smash = function(){
 
 		var DZS = x + inset + body;
 		var DZE = x + inset + body;
-		
+
+		var VDS = y;
+		var VDE = y + height;
+
 		for(c in characters){
 			var val = characters[c];
 
@@ -119,14 +121,13 @@ Player.prototype.smash = function(){
 			var TZS = cX + inset;
 			var TZE = cX + inset + body; 
 
-			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
+			var VTS = cY;
+			var VTE = cY + height;
+
+
+			if ( DZS < TZE  && DZE > TZS && c !== this.id && VDS < VTE && VDE > VTS ) {
 				characters[c]["name"]["text"] = "Victim";
 				characters[c].sprite.body.velocity.x = 1e3;
-				characters[c].disableInput = true;
-				setTimeout(function() {
-					var cc = c;
-					characters[cc].disableInput = false;
-				}, 1000);
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
@@ -140,11 +141,37 @@ Player.prototype.smash = function(){
 		}
 	}else{
 
-		var dangerZone = x+inset-reach;
+		var DZS = x + inset;
+		var DZE = x + inset;
+
+		var VDS = y;
+		var VDE = y + height;
+
 		for(c in characters){
-			//characters[c]["name"]["text"] = "Victim";
-			if(characters[c]["x"]+inset+body > dangerZone && characters[c]["y"]+inset < y+height && this.id != c){
-				console.log("Hit: " + characters[c]["name"]["text"]);
+			var val = characters[c];
+
+			var cX = val.sprite.x;
+			var cY = val.sprite.y;
+
+			var TZS = cX + inset;
+			var TZE = cX + inset + body; 
+
+			var VTS = cY;
+			var VTE = cY + height;
+
+
+			if ( DZS < TZE  && DZE > TZS && c !== this.id && VDS < VTE && VDE > VTS ) {
+				characters[c]["name"]["text"] = "Victim";
+				characters[c].sprite.body.velocity.x = -1e3;
+				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
+				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
+				// var angle = angleTo(tPoint,sPoint);
+
+				// console.log(Math.sin(angle/180*Math.PI), Math.cos(angle/180*Math.PI));
+
+				// characters[c]["sprite"].body.velocity.y = Math.sin(angle/180*Math.PI) * -500;
+				// characters[c]["sprite"].body.velocity.x = Math.cos(angle/180*Math.PI) * 500;
+				
 			}
 		}
 	}
