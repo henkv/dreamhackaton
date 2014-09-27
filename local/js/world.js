@@ -9,8 +9,6 @@ world.preload = function() {
 var map;
 var bg;
 var layer;
-var cursors;
-var player;
 
 world.create = function() {
 	bg = game.add.sprite(0,0,"sky");
@@ -20,10 +18,11 @@ world.create = function() {
 	map.addTilesetImage("AllGroundTiles", "tiles");
 
 	layer = map.createLayer(0);
+	map.setCollisionBetween(0, 10);
 
+	layer.debug = true;
 	layer.resizeWorld();
 
-	map.setCollisionBetween(0, 10);
 
 }
 
