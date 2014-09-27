@@ -67,13 +67,24 @@ player.smash = function(id) {
 		for (var key in this.group) {
 			var val = this.group[key];
 			var tX = val.body.x;
+			var tY = val.body.y;
 
-			var TZS;
+			var tWidth = val.body.width;
+			var tHeight = val.body.height;
+
+			var TZS = tX;
+			var TZE = tX + tWidth;
+
+			if (DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
+				val.body.velocity.x = 1000;
+			}
 
 		}
 
 	}
 
+	
+	
 
 
 	if(this.facing[id]=="right"){
