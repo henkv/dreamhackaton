@@ -143,8 +143,8 @@ Player.prototype.getId = function(){
 }
 
 
-var friction = function(id) {
-	var sprite = characters[id]["sprite"];
+var friction = function(sprite) {
+	//var sprite = characters[id]["sprite"];
 	var vel = sprite.body.velocity;
 	if (vel.y === 0 && vel.x > 0) {
 		characters[this.id].sprite.body.velocity.x -= 1;
