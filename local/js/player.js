@@ -42,7 +42,6 @@ player.make = function(id) {
 
 player.jump = function(id) {
 	var vY = Math.round(this.group[id].body.velocity.y);
-	console.log(vY);
 	if (vY >= -6 && vY <= -4) {
 		this.group[id].body.velocity.y = -1000; 
 	}
