@@ -1,19 +1,22 @@
 var characters = {};
 
 function Player(id){
+
 	this.id = id;
 	this.facing = true;
 	this.maxVelocity = 450;
 
 	characters[this.id] = {};
 	characters[this.id]["sprite"] = {};
-
- 	characters[this.id]["sprite"] = game.add.sprite(0,0,'char');
+	//game.add.sprite(0,0,'char');
+ 	characters[this.id]["sprite"] = players.create(0,0,'char');
 
  	var sprite = characters[this.id]["sprite"];
 
  	game.physics.enable(sprite, Phaser.Physics.ARCADE);
-	sprite.animations.add('run', [0,1,2,3,4,5,6,7], 12, true);
+	sprite.animations.add('runFast', [0,1,2,3,4,5,6,7], 16, true);
+	sprite.animations.add('runSlow', [0,1,2,3,4,5,6,7], 8, true);
+	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
 	sprite.body.collideWorldBounds = true;
 }
 
@@ -25,7 +28,13 @@ Player.prototype.move = function(x){
 	var sprite = characters[this.id]["sprite"];
 	if(x != 0){
 		if(x > 0)
-			sprite.play("run");
+			if(Math.abs(x) < 0.5){
+				sprite.play("runSlow");
+			}else if(Math.abs(x) < 0.75){
+				sprite.play("runMedium");
+			}else{
+				sprite.play("runFast");
+			}
 		else
 			sprite.play("run");
 
@@ -43,8 +52,7 @@ Player.prototype.jump = function(){
 	var sprite = characters[this.id]["sprite"];
 	if(sprite.body.velocity.y == 0){
 		sprite.body.velocity.y = -150;
-	}
-	
+	} 
 }
 
 Player.prototype.remove = function(){
