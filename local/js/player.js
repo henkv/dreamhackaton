@@ -108,7 +108,10 @@ Player.prototype.smash = function(){
 
 		var DZS = x + inset + body;
 		var DZE = x + inset + body;
-		
+
+		var VDS = y;
+		var VDE = y + height;
+
 		for(c in characters){
 			var val = characters[c];
 
@@ -118,7 +121,11 @@ Player.prototype.smash = function(){
 			var TZS = cX + inset;
 			var TZE = cX + inset + body; 
 
-			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
+			var VTS = cY;
+			var VTE = cY + height;
+
+
+			if ( DZS < TZE  && DZE > TZS && c !== this.id && VDS < VTE && VDE > VTS ) {
 				characters[c]["name"]["text"] = "Victim";
 				characters[c].sprite.body.velocity.x = 1e3;
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
