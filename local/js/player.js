@@ -100,18 +100,36 @@ Player.prototype.smash = function(){
 
 	if(this.facing){
 
-		var dangerZone = x+inset+body+reach;
-
+		var dangerZoneStart = x+inset+body;
+		var dangerZoneEnd = x+inset+body+reach;
+		
 		for(c in characters){
+			var val = characters[c];
 
-			if(characters[c]["x"]+inset < dangerZone && characters[c]["y"]+inset < y+height && this.id != c){
-				//var sPoint = new Phaser.Point(x+inset);
+			var cX = val.sprite.x;
+			var cY = val.sprite.y;
+
+			var targetZone = cX + inset;
+			
+			if(dangerZoneStart < targetZone && dangerZoneEnd > targetZone){
+
+				characters[c]["name"]["text"] = "Victim";
+				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
+				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
+				// var angle = angleTo(tPoint,sPoint);
+
+				// console.log(Math.sin(angle/180*Math.PI), Math.cos(angle/180*Math.PI));
+
+				// characters[c]["sprite"].body.velocity.y = Math.sin(angle/180*Math.PI) * -500;
+				// characters[c]["sprite"].body.velocity.x = Math.cos(angle/180*Math.PI) * 500;
+				
 			}
 		}
 	}else{
 
 		var dangerZone = x+inset-reach;
 		for(c in characters){
+			//characters[c]["name"]["text"] = "Victim";
 			if(characters[c]["x"]+inset+body > dangerZone && characters[c]["y"]+inset < y+height && this.id != c){
 				console.log("Hit: " + characters[c]["name"]["text"]);
 			}
@@ -121,4 +139,20 @@ Player.prototype.smash = function(){
 
 Player.prototype.getId = function(){
 	return this.id;
+}
+
+
+
+
+
+function angleTo(a,b){
+	var deltaX = b.x - a.x;
+	var deltaY = b.y - a.y;
+
+	//console.log(deltaX + " " + deltaY);
+
+	//console.log(Math.atan2(deltaY,deltaX));
+
+	return Math.atan2(deltaY,deltaX)*180/Math.PI;
+
 }
