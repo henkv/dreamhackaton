@@ -112,7 +112,7 @@ Player.prototype.smash = function(){
 			var TZS = cX+inset;
 			var TZE = cX+inset+body; 
 
-			if ( DZS < TZE  && DZE > TZS ) {
+			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
 				characters[c].sprite.kill();
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
