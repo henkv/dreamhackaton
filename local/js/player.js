@@ -100,8 +100,8 @@ Player.prototype.smash = function(){
 
 	if(this.facing){
 
-		var dangerZoneStart = x+inset+body;
-		var dangerZoneEnd = x+inset+body+reach;
+		var DZS = x+inset+body/2
+		var DZE = x+inset*1.1+body;
 		
 		for(c in characters){
 			var val = characters[c];
@@ -109,11 +109,12 @@ Player.prototype.smash = function(){
 			var cX = val.sprite.x;
 			var cY = val.sprite.y;
 
-			var targetZone = cX + inset;
-			
-			if(dangerZoneStart < targetZone && dangerZoneEnd > targetZone){
+			var TZS = cX+inset;
+			var TZE = cX+inset+body; 
 
+			if ( DZS < TZE  && DZE > TZS ) {
 				characters[c]["name"]["text"] = "Victim";
+				characters[c].sprite.kill();
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
