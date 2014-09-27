@@ -49,7 +49,13 @@ player.jump = function(id) {
 
 
 player.smash = function(id) {
-	//this.group[id].body.velocity.y = -500; 
+	var sprite = this.group[id];
+	var x = sprite.body.x;
+	var y = sprite.body.y;
+
+	var width = sprite.body.width;
+	var height = sprite.body.height;
+	var reach = 5;
 
 
 	if(this.facing[id]=="right"){
@@ -76,14 +82,11 @@ player.update = function() {
 
 player.move = function(id, x) {
 	var sprite = this.group[id];
-	sprite.body.velocity.x = this.maxVelocity*x;
+	sprite.body.velocity.x = sprite.body.maxVelocity * x;
 
-	var sprite = characters[this.id]["sprite"];
-	if (characters[this.id].disableInput) {
-		return;
-	}
+	var sprite = this.group[id];
+
 	if(x != 0){
-		characters[this.id].running = true;
 		if(x > 0){
 			if(this.facing[id]==="left"){
 				sprite.loadTexture('charRunRight', 0, false);
@@ -103,7 +106,6 @@ player.move = function(id, x) {
 
 		
 	}else{
-		//characters[this.id].running = false;
 		if(this.facing[id]=="right"){
 			sprite.loadTexture('charIdleRight', 0, false);
 		} else {
@@ -112,4 +114,8 @@ player.move = function(id, x) {
 		sprite.play("idleRight");
 
 	}
+}
+
+player.destroy = function(id) {
+	this.group[id].destroy();
 }

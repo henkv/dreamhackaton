@@ -1,3 +1,4 @@
+
 var game = new Phaser.Game(2256, 1300, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
  
 function preload() {
@@ -5,16 +6,22 @@ function preload() {
 	world.preload();	
 	player.preload();
 	
+
 }
  
 function create() {
+
+	//game.scaleMode = 2;
+	//game.stage.ShowAll();
+	//console.log(game);
+	//game.scale.enterFullscreen();
+
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.physics.arcade.gravity.y = 2000;
 
 	world.create();
 	player.create();
 
-	player.make("asd");
 
 	createServer();
 
