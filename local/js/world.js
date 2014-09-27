@@ -24,6 +24,8 @@ var world = {
 		this.map.addTilesetImage("GroundTileBigEnd1", "GroundTileBigEnd1");
 		this.map.addTilesetImage("GroundTileBigEnd2", "GroundTileBigEnd2");
 
+		this.map.setCollisionBetween(1,1000);
+
 		this.layers.pilars3 = this.map.createLayer("Pilars3");
 		this.layers.pilars2 = this.map.createLayer("Pilars2");
 		this.layers.pilars = this.map.createLayer("Pilars");
@@ -43,7 +45,6 @@ var world = {
 		game.physics.arcade.enable(this.layers.pilars2, Phaser.Physics.ARCADE, true);
 		game.physics.arcade.enable(this.layers.pilars, Phaser.Physics.ARCADE, true);
 		game.physics.arcade.enable(this.layers.ground, Phaser.Physics.ARCADE, true);
-
 		
 		this.layers.pilars3.resizeWorld();
 		this.layers.pilars2.resizeWorld();
@@ -56,8 +57,12 @@ var world = {
 		
 		var Sprite = characters[id].sprite;
 		var yPos = Sprite.body.position.y + 200;
-	game.physics.arcade.collide(Sprite, world.layers.ground);
+		
 
+		game.physics.arcade.collide(Sprite, world.layers.ground, world.layers.pilars3, world.layers.pilars1,world.layers.pilars2);
+
+
+		/*
 		if(yPos < 200) {
 			game.physics.arcade.collide(Sprite, world.layers.pilars3);
 
@@ -70,6 +75,6 @@ var world = {
 		} else {
 			game.physics.arcade.collide(Sprite, world.layers.ground);
 
-		}
+		}*/
 	}
 };
