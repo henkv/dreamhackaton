@@ -75,7 +75,7 @@ player.smash = function(id) {
 			var TZS = tX;
 			var TZE = tX + tWidth;
 
-			if (DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
+			if (key !== id && DZS > TZS && DZE < TZE && y < tY + tHeight && y + height > tY) {
 				val.body.velocity.x = 1000;
 			}
 
