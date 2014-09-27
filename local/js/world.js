@@ -41,10 +41,10 @@ var world = {
  		this.layers.pilars.debug = true;
  		this.layers.ground.debug = true;
 
-		game.physics.arcade.enable(this.layers.pilars3, Phaser.Physics.ARCADE, true);
-		game.physics.arcade.enable(this.layers.pilars2, Phaser.Physics.ARCADE, true);
-		game.physics.arcade.enable(this.layers.pilars, Phaser.Physics.ARCADE, true);
-		game.physics.arcade.enable(this.layers.ground, Phaser.Physics.ARCADE, true);
+		game.physics.p2.enable(this.layers.pilars3, Phaser.Physics.ARCADE, true);
+		game.physics.p2.enable(this.layers.pilars2, Phaser.Physics.ARCADE, true);
+		game.physics.p2.enable(this.layers.pilars, Phaser.Physics.ARCADE, true);
+		game.physics.p2.enable(this.layers.ground, Phaser.Physics.ARCADE, true);
 		
 		this.layers.pilars3.resizeWorld();
 		this.layers.pilars2.resizeWorld();
