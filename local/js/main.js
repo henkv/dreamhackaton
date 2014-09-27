@@ -5,8 +5,7 @@ function preload() {
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
 	game.load.spritesheet('char', 'assets/Run_left.png',200,200,8);
 	
-	game.load.spritesheet('tileGround1', 'assets/GroundTile1.png');
-	game.load.spritesheet('tileGround2', 'assets/GroundTile2.png');
+	world.preload();
 }
  
 function create() {
@@ -17,6 +16,7 @@ function create() {
 	//game.physics.arcade.collide('char', sprite2, collisionHandler, null, this);
 	game.physics.arcade.gravity.y = 100;
 
+	world.create();
 	// var hej = new Player("AskiaSonghai");
 
 	// hej.move();
