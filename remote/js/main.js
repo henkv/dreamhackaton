@@ -14,9 +14,8 @@ $(window).on("resize", function(e) {
 
 var oldX, oldY, newX = 0, newY = 0;
 function padBounds( delta ) {
-	return (Math.max(-cX, 
-		Math.min( cX, delta)
-	) / cX).toFixed(2);
+	delta = ((delta-cX)/cX).toFixed(2);
+	return Math.max(Math.min(delta, 1), -1);
 }
 
 
@@ -46,9 +45,9 @@ var pad = {
 			var touch = touches[touch];
 			if (typeof touch === "object") {
 				if (touch.target.id === "pad") {
-					
-					newX = padBounds(touch.clientX - cX);
-					newY = padBounds(cY - touch.clientY);
+
+					newX = padBounds(touch.clientX);
+					newY = padBounds(touch.clientY);
 					
 					if (newX !== oldX && newY !== oldY) {
 						socket.emit( "pad", newX, newY);
