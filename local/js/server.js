@@ -20,6 +20,7 @@ function makeId () {
 io.on("connection", function(socket) {
 	var id = makeId();
 	player.make(id);
+	console.log(id, "connected");
 
 	socket.on("pad", function(x, y) {
 		player.move(id, x);
