@@ -142,13 +142,7 @@ Player.prototype.getId = function(){
 	return this.id;
 }
 
-Player.prototype.friction = function() {
-	if (this.sprite.body.velocity.x > 0 && his.sprite.body.velocity.y === 0) {
-		this.sprite.body.velocity.x -= 1;
-	} else if (this.sprite.body.velocity.x < 0 && his.sprite.body.velocity.y === 0) {
-		this.sprite.body.velocity.x += 1;
-	}
-};
+
 
 
 
