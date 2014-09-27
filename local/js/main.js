@@ -17,7 +17,7 @@ function create() {
 	//game.scale.enterFullscreen();
 
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-	game.physics.arcade.gravity.y = 2000;
+	game.physics.arcade.gravity.y = 1300;
 
 	world.create();
 	player.create();

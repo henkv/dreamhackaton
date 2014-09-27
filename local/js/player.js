@@ -4,6 +4,7 @@ player.preload = function() {
 	game.load.spritesheet('charRunRight', 'assets/Run.png',200,200,8);
 	game.load.spritesheet('charRunLeft', 'assets/Run_left.png',200,200,8);
 	game.load.spritesheet('charIdleRight', 'assets/Idle.png',200,200,4);
+	game.load.spritesheet('charIdleLeft', 'assets/Idle_left.png',200,200,4);
 	game.load.spritesheet('charPunchRight', 'assets/Run.png',200,200,8);
 	game.load.spritesheet('charPunchLeft', 'assets/Run_left.png',200,200,8);
 }
@@ -23,6 +24,8 @@ player.make = function(id) {
 	p.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true); 
 	p.animations.add('punchRight',[0,1,2,3], 12, true);
 	p.animations.add('punchLeft',[3,2,1,0], 12, true);
+	p.animations.add('jumpRight',[3,2,1,0], 12, true);
+	p.animations.add('jumpLeft',[3,2,1,0], 12, true);
 
     game.physics.enable(p);
 
@@ -44,6 +47,18 @@ player.jump = function(id) {
 	var vY = Math.round(this.group[id].body.velocity.y);
 	if (vY >= -6 && vY <= -4) {
 		this.group[id].body.velocity.y = -1000; 
+	}
+
+	if(this.facing[id]=="right"){
+		sprite.loadTexture('charRunRight', 0, false);
+		this.facing[id] = "right";
+		sprite.play("punchRight");
+	}else{
+		if(this.facing[id]=="left"){
+			sprite.loadTexture('charPunchLeft', 0, false);
+			this.facing[id]="left";
+		}
+		sprite.play("punchLeft");
 	}
 }
 
@@ -126,10 +141,12 @@ player.move = function(id, x) {
 	}else{
 		if(this.facing[id]=="right"){
 			sprite.loadTexture('charIdleRight', 0, false);
+			sprite.play("idleRight");
 		} else {
 			sprite.loadTexture('charIdleLeft', 0, false);
+			sprite.play("idleLeft");
 		}
-		sprite.play("idleRight");
+		
 
 	}
 }
