@@ -1,16 +1,17 @@
-var characters = {};
+var characters = {},
+	first = true;
 
 function Player(id){
 
 	this.id = id;
 	this.facing = true;
 	this.maxVelocity = 450;
-
+	
 	characters[this.id] = {};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
- 	characters[this.id]["sprite"] = game.add.sprite(0,0,'char');
-
+	characters[this.id]["sprite"] = players.create(0,0,'char');
+ 	
  	var sprite = characters[this.id]["sprite"];
 
  	game.physics.enable(sprite, Phaser.Physics.ARCADE);
