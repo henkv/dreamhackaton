@@ -124,8 +124,8 @@ Player.prototype.smash = function(){
 				characters[c].sprite.body.velocity.x = 1e3;
 				characters[c].disableInput = true;
 				setTimeout(function() {
-					var c = c;
-					characters[c].disableInput = false;
+					var cc = c;
+					characters[cc].disableInput = false;
 				}, 1000);
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
