@@ -11,7 +11,7 @@ world.preload = function() {
 var map;
 var tileset;
 var bg;
-var layer;
+var layer = {};
 
 world.create = function() {
 	bg = game.add.sprite(0,0,"sky");
@@ -22,11 +22,17 @@ world.create = function() {
 
 	map.setCollisionBetween(0, 10);
 
-	layer = map.createLayer(0);
-	map.setCollisionBetween(0, 10);
+	layer.pilars3 =map.createLayer("plat3");
+	layer.pilars2 =map.createLayer("plat2");
+	layer.pilars = map.createLayer("plat1");
+	layer.ground = map.createLayer("ground");
 
-	layer.debug = true;
-	layer.resizeWorld();
+	//layer = map.createLayer(0);
+	map.setCollisionBetween(0, 10);
+	for(var lay in layer)
+		layer[lay].debug = true;
+	
+	layer.ground.resizeWorld();
 
 }
 

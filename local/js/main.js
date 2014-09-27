@@ -16,7 +16,7 @@ function create() {
 	world.create();
 	player.create();
 
-	player.make();
+	player.make("Penis");
 
 
 	createServer();

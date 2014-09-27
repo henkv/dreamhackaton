@@ -6,14 +6,14 @@ player.preload = function() {
 	game.load.spritesheet('charIdleRight', 'assets/Idle.png',200,200,4);
 }
 
-player.group = [];
+player.group = {};
 
 player.create = function() {
 
 
 }
 
-player.make = function() {
+player.make = function(id) {
 	var p = game.add.sprite(32,32, "charIdleRight");
 
     game.physics.enable(p);
@@ -23,14 +23,16 @@ player.make = function() {
     p.body.linearDamping = 1;
     p.body.collideWorldBounds = true;
 
-	this.group.push(p);
+	this.group[id] = p;
 
 }
 
 player.update = function() {
-	for (var i = 0; i < this.group.length; i++) {
+	for(var dude in player.group) {
 		
-
-		game.physics.arcade.collide(this.group[i], layer);
-	};
+		for(var key in world.layer) {
+			game.physics.arcade.collide(this.group[dude], world.layer[key]);
+		}
+		
+	}
 }
