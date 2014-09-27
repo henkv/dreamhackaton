@@ -3,15 +3,14 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 function preload() {
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
 	
-	game.load.spritesheet('tileGround1', 'assets/GroundTile1.png');
-	game.load.spritesheet('tileGround2', 'assets/GroundTile2.png');
-	
+	world.preload();
 }
  
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.physics.arcade.gravity.y = 100;
 
+	world.create();
 	// var hej = new Player("AskiaSonghai");
 
 	// hej.move();
