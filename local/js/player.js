@@ -101,7 +101,7 @@ Player.prototype.smash = function(){
 	if(this.facing){
 
 		var DZS = x + inset + body;
-		var DZE = x + body;
+		var DZE = x + inset + body;
 		
 		for(c in characters){
 			var val = characters[c];
