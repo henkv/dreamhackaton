@@ -1,9 +1,6 @@
-var h = window.innerHeight * window.devicePixelRatio;
-var w = window.innerWidth * window.devicePixelRatio;
 
-
-var game = new Phaser.Game((h > w) ? h : w, (h > w) ? w : h, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
-
+var game = new Phaser.Game(2256, 1300, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+ 
 function preload() {
 
 	world.preload();	
@@ -26,10 +23,25 @@ function create() {
 	player.create();
 
 
-
 	createServer();
+
+	game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+	game.input.onDown.add(gofull, this);
 }
  
+function gofull() {
+
+    if (game.scale.isFullScreen)
+    {
+        game.scale.stopFullScreen();
+    }
+    else
+    {
+        game.scale.startFullScreen(false);
+    }
+
+}
+
 function update() {
 	player.update();
 	//world.update();

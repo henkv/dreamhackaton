@@ -18,7 +18,7 @@ player.create = function() {
 
 player.make = function(id) {
 	var p = game.add.sprite(32,32, "charIdleRight");
-	p.animations.add('idleRight', [0,1,2,3], 2, true);
+	p.animations.add('charIdleLeft', [0,1,2,3], 2, true);
 	p.animations.add('runMediumRight', [0,1,2,3,4,5,6,7], 12, true);
 	p.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true); 
 	p.animations.add('punchRight',[0,1,2,3], 12, true);
@@ -57,8 +57,19 @@ player.smash = function(id) {
 	var height = sprite.body.height;
 	var reach = 5;
 
-}
 
+	if(this.facing[id]=="right"){
+		sprite.loadTexture('charPunchRight', 0, false);
+		this.facing[id] = "right";
+		sprite.play("punchRight");
+	}else{
+		if(this.facing[id]=="left"){
+			sprite.loadTexture('charPunchLeft', 0, false);
+			this.facing[id]="left";
+		}
+		sprite.play("punchLeft");
+	}
+}
 
 player.update = function() {
 	for(var dude in player.group) {	
@@ -68,7 +79,6 @@ player.update = function() {
 		
 	}
 }
-
 
 player.move = function(id, x) {
 	var sprite = this.group[id];
@@ -89,14 +99,13 @@ player.move = function(id, x) {
 			if(this.facing[id]=="right"){
 				sprite.loadTexture('charRunLeft', 0, false);
 				this.facing[id]="left";
-			}
-
-			sprite.play("runMediumLeft");
 		}
+
+		sprite.play("runMediumLeft");
+	}
 
 		
 	}else{
-		//characters[this.id].running = false;
 		if(this.facing[id]=="right"){
 			sprite.loadTexture('charIdleRight', 0, false);
 		} else {
