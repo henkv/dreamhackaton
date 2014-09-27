@@ -2,7 +2,6 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 var players, platforms;
  
 function preload() {
-	createServer();
 	
 	game.load.spritesheet('char', 'assets/Run.png',200,200,8);
 	game.load.spritesheet('charLeft', 'assets/Run_left.png',200,200,8);
@@ -13,6 +12,7 @@ function preload() {
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	players = game.add.group();
+	createServer();
 	//game.physics.setImpactEvents(true);
 	//game.physics.arcade.collide('char', sprite2, collisionHandler, null, this);
 	game.physics.arcade.gravity.y = 300;
