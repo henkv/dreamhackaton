@@ -16,28 +16,26 @@ function makeId () {
   return Math.random().toString(36).substr(2, 6);
 }
 
-/*
+
 io.on("connection", function(socket) {
 	var id = makeId();
-	console.log(id, "connected");
-
-	var ch = new Player(id, "Chefren");
+	player.make(id);
 
 	socket.on("pad", function(x, y) {
-		ch.move(x);
+		player.move(id, x);
 	})
 
 	socket.on("jump", function() {
-		ch.jump();
+		player.jump(id);
 	})
 	socket.on("attack", function() {
-		ch.smash();
+		player.smash(id);
 	})
 
 	socket.on("disconnect", function() {
-		ch.remove();
+		player.remove(id);
 	})
-}); */
+});
 
 
 }
