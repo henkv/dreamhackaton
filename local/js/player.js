@@ -8,7 +8,8 @@ function Player(id, name){
 	this.maxVelocity = 750;
 
 	characters[this.id] = {
-		running: false
+		running: false,
+		disableInput: false
 	};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
@@ -44,6 +45,9 @@ Player.prototype.run = function(){
 
 Player.prototype.move = function(x){
 	var sprite = characters[this.id]["sprite"];
+	if (characters[this.id].disableInput) {
+		return;
+	}
 	if(x != 0){
 		characters[this.id].running = true;
 		if(x > 0){
@@ -118,6 +122,10 @@ Player.prototype.smash = function(){
 			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
 				characters[c].sprite.body.velocity.x = 1e3;
+				characters[c].disableInput = true;
+				setTimeout(function() {
+					characters[c].disableInput = false;
+				}, 1000);
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
