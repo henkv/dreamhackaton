@@ -7,5 +7,6 @@ var world = {
 	},
 	create: function() {
 		this.bg = game.add.sprite(0,0,"sky");
+		platforms = game.add.group();
 	}
 };
