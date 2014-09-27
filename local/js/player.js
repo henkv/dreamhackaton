@@ -1,5 +1,4 @@
-var characters = {},
-	first = true;
+var characters = {}
 
 function Player(id){
 
