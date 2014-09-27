@@ -30,7 +30,7 @@ function create() {
 	players.setAll('body.bounce.y', 2);
 
 	var ll = {};
-	for(var i = 0; i<100; i++){
+	for(var i = 0; i<10; i++){
 		ll[i] = new Player(i, "Chefren"+i);
 	}
 
