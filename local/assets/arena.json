@@ -1,7 +1,7 @@
 { "height":8,
  "layers":[
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 0, 0, 0, 0, 0, 0, 0, 7, 8, 9, 0, 0, 0, 0, 10, 11, 0, 0, 0, 0, 7, 8, 9, 10, 11, 12, 0, 0, 0, 0, 4, 5, 0, 0, 0, 0, 10, 11, 12, 10, 11, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 11, 12, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 3, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 5, 18, 0, 0, 0, 0, 0, 0, 0, 7, 8, 9, 13, 0, 0, 24, 5, 19, 0, 0, 0, 15, 7, 8, 9, 10, 11, 12, 14, 0, 0, 25, 11, 20, 0, 0, 0, 16, 10, 11, 12, 10, 11, 12, 14, 0, 0, 26, 11, 21, 0, 0, 0, 16, 10, 11, 12, 0, 0, 0, 0, 0, 0, 26, 0, 21, 0, 0, 0, 0, 0, 0, 0],
          "height":8,
          "name":"Pilars",
          "opacity":1,
@@ -64,6 +64,66 @@
          "imagewidth":354,
          "margin":0,
          "name":"GroundTileB",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":118,
+         "tilewidth":118
+        }, 
+        {
+         "firstgid":13,
+         "image":"GroundTileEnd2.png",
+         "imageheight":236,
+         "imagewidth":118,
+         "margin":0,
+         "name":"GroundTileEnd2",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":118,
+         "tilewidth":118
+        }, 
+        {
+         "firstgid":15,
+         "image":"GroundTileEnd1.png",
+         "imageheight":236,
+         "imagewidth":118,
+         "margin":0,
+         "name":"GroundTileEnd1",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":118,
+         "tilewidth":118
+        }, 
+        {
+         "firstgid":17,
+         "image":"GroundTileBigEnd1.png",
+         "imageheight":590,
+         "imagewidth":118,
+         "margin":0,
+         "name":"GroundTileBigEnd1",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":118,
+         "tilewidth":118
+        }, 
+        {
+         "firstgid":22,
+         "image":"GroundTileBigEnd2.png",
+         "imageheight":590,
+         "imagewidth":118,
+         "margin":0,
+         "name":"GroundTileBigEnd2",
          "properties":
             {
 
