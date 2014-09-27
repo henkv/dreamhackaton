@@ -12,6 +12,7 @@ function preload() {
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	players = game.add.group();
+	createServer();
 	//game.physics.setImpactEvents(true);
 	//game.physics.arcade.collide('char', sprite2, collisionHandler, null, this);
 	game.physics.arcade.gravity.y = 300;
