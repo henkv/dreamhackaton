@@ -46,5 +46,8 @@ function update() {
 		characters[c]["name"].position.y = y-20;
 		friction(c);
 
+		world.update(c);
 	}
+
+
 }
