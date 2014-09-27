@@ -29,8 +29,8 @@ world.create = function() {
 
 	//layer = map.createLayer(0);
 	map.setCollisionBetween(0, 10);
-	for(var lay in layer)
-		layer[lay].debug = true;
+	//for(var lay in layer)
+	//	layer[lay].debug = true;
 	
 	//layer.ground.resizeWorld();
 
@@ -42,6 +42,6 @@ world.update = function(){
 }
 
 world.render = function() {
-	game.debug.body(map);
+	//game.debug.body(map);
 }
 
