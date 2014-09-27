@@ -48,7 +48,7 @@ player.jump = function(id) {
 	if (vY >= -6 && vY <= -4) {
 		this.group[id].body.velocity.y = -1000; 
 	}
-
+	/*
 	if(this.facing[id]=="right"){
 		sprite.loadTexture('jumpRight', 0, false);
 		this.facing[id] = "right";
@@ -59,7 +59,7 @@ player.jump = function(id) {
 			this.facing[id]="left";
 		}
 		sprite.play("charRunLeft");
-	}
+	} */
 }
 
 
@@ -71,9 +71,6 @@ player.smash = function(id) {
 	var width = sprite.body.width;
 	var height = sprite.body.height;
 	var reach = 5;
-
-	console.log(x,y,width,height);
-
 
 	if ( this.facing[id] === "right" ) {
 		var DZS = x + width/2;
@@ -103,13 +100,11 @@ player.smash = function(id) {
 
 
 	if(this.facing[id]=="right"){
-		sprite.loadTexture('charPunchRight', 0, false);
-		this.facing[id] = "right";
+		sprite.loadTexture('charPunchRight', 0, false);		
 		sprite.play("punchRight");
 	}else{
 		if(this.facing[id]=="left"){
-			sprite.loadTexture('charPunchLeft', 0, false);
-			this.facing[id]="left";
+			sprite.loadTexture('charPunchLeft', 0, false);		
 		}
 		sprite.play("punchLeft");
 	}
