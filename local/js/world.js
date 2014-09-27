@@ -68,19 +68,6 @@ var world = {
 			game.physics.arcade.collide(Sprite, world.layers.ground);
 
 		}*/
-	},
-
-	clouds: function() {
-
-		// ta tiden, få när det sista molnet skapads och vänta en viss tid 
-		var image = game.add.sprite(0, 0, 'Cloud1');
-		game.physics.enable(image, Phaser.Physics.ARCADE);
-		image.body.velocity.x = 100;
-
-		if( () ) {
-
-		}
-
 	}
 
 
