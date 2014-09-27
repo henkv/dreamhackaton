@@ -8,7 +8,7 @@ function Player(id, name){
 	this.maxVelocity = 750;
 
 	characters[this.id] = {
-		running: false,
+		running: false 
 	};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
@@ -19,28 +19,30 @@ function Player(id, name){
 
     characters[this.id]["name"].anchor.set(0.5);
 
-	characters[this.id]["sprite"] = players.create(Math.floor(Math.random()*1000),0,'char');
+	characters[this.id]["sprite"] = game.add.sprite(Math.floor(Math.random()*1000),0,'char');
  	
- 	var sprite = characters[this.id]["sprite"];
 
- 	game.physics.enable(sprite);
+ 	game.physics.enable(characters[this.id]["sprite"]);
 
-	sprite.animations.add('idle', [0,1,2,3], 2, true);
-	sprite.animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
-	sprite.animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true);
+	characters[this.id]["sprite"].animations.add('idle', [0,1,2,3], 2, true);
+	characters[this.id]["sprite"].animations.add('runMedium', [0,1,2,3,4,5,6,7], 12, true);
+	characters[this.id]["sprite"].animations.add('runMediumLeft', [7,6,5,4,3,2,1,0], 12, true);
 
-	sprite.body.collideWorldBounds = true;
+	characters[this.id]["sprite"].body.collideWorldBounds = true;
 
-	sprite.body.width = 130;
-	sprite.body.checkCollision.up = false;
-	sprite.body.enable = true;
-	sprite.body.offset = new Phaser.Point(35,0)
-	//	console.log(sprite.body.width);
+	characters[this.id]["sprite"].body.width = 130;
+	characters[this.id]["sprite"].body.checkCollision.up = false;
+	characters[this.id]["sprite"].body.enable = true;
+	characters[this.id]["sprite"].body.offset = new Phaser.Point(35,0)
+	characters[this.id]["sprite"].body.bounce.y = 0.2;
+	characters[this.id]["sprite"].body.linearDampning = 1;
 
-	sprite.loadTexture('charIdle', 0, false);
-	sprite.play("idle");
+	//	console.log(characters[this.id]["sprite"].body.width);
 
-	characters[this.id]["sprite"] = sprite;
+	characters[this.id]["sprite"].loadTexture('charIdle', 0, false);
+	characters[this.id]["sprite"].play("idle");
+
+	players.add(characters[this.id].sprite);
 }
 
 Player.prototype.run = function(){
