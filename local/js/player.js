@@ -29,10 +29,9 @@ player.make = function(id) {
 }
 
 player.update = function() {
-	for(var dude in player.group) {
-		
-		for(var key in world.layer) {
-			game.physics.arcade.collide(this.group[dude], world.layer[key]);
+	for(var dude in player.group) {	
+		for(var key in layer) {
+			game.physics.arcade.collide(this.group[dude], layer[key]);
 		}
 		
 	}

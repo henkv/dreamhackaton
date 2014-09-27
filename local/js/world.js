@@ -32,7 +32,7 @@ world.create = function() {
 	for(var lay in layer)
 		layer[lay].debug = true;
 	
-	layer.ground.resizeWorld();
+	//layer.ground.resizeWorld();
 
 }
 
