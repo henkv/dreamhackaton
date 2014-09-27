@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1200, 700, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(1280, 720, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var players, platforms;
  
 function preload() {
@@ -35,7 +35,6 @@ function create() {
 }
  
 function update() {
-	//game.physics.arcade.collide(players);
 
 	for(c in characters){
 		var x = characters[c]["sprite"].position.x;
