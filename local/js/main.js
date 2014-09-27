@@ -7,7 +7,6 @@ function preload() {
 	game.load.spritesheet('charRunLeft', 'assets/Run_left.png',200,200,8);
 	game.load.spritesheet('charIdleLeft', 'assets/Idle.png',200,200,4);
 	
-	world.preload();
 }
  
 function create() {
@@ -27,4 +26,4 @@ function update() {
 }
 
 function render () {
-	}
+}
