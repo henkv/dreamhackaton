@@ -17,11 +17,13 @@ function create() {
 	player = makePlayer();
 	createServer();
 
+	world.create();
 
 }
  
 function update() {
-	game.physics.arcade.collide(player);//, layer);	
+	game.physics.arcade.collide(player, layer);	
+	// world.update();
 }
 
 function render () {

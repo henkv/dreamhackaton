@@ -16,6 +16,7 @@ function makeId () {
   return Math.random().toString(36).substr(2, 6);
 }
 
+/*
 io.on("connection", function(socket) {
 	var id = makeId();
 	console.log(id, "connected");
@@ -36,7 +37,7 @@ io.on("connection", function(socket) {
 	socket.on("disconnect", function() {
 		ch.remove();
 	})
-});
+}); */
 
 
 }
