@@ -1,35 +1,38 @@
 var world = {
 	bg: null,
+	map: null,
+	layers: {},
 	preload: function() {
-		game.load.image('tileGround1', 'assets/GroundTile1.png');
-		game.load.image('tileGround2', 'assets/GroundTile2.png');
+		game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.TILED_JSON)
+		game.load.image('GroundTileA', 'assets/GroundTileA.png');
+		game.load.image('GroundTileB', 'assets/GroundTileB.png');
+		game.load.image('GroundTileEnd1', 'assets/GroundTileEnd1.png');
+		game.load.image('GroundTileEnd2', 'assets/GroundTileEnd2.png');
+		game.load.image('GroundTileBigEnd1', 'assets/GroundTileBigEnd1.png');
+		game.load.image('GroundTileBigEnd2', 'assets/GroundTileBigEnd2.png');
+		
 		game.load.image('sky', "assets/Sky.png");	
 	},
 	create: function() {
 		this.bg = game.add.sprite(0,0,"sky");
 
-		platforms = game.add.group();
-		platforms.enableBody = true;
-		platforms.physicsBodyType = Phaser.Physics.ARCADE;
-		platforms.setAll("body.allowGravity", false);
 		
-		var plat = platforms.create(0,600, "tileGround1");
-		plat.body.allowGravity = false;
-		plat.body.immovable = true;
+		
+		this.map = game.add.tilemap("map");
+		this.map.addTilesetImage("GroundTileA", "GroundTileA");
+		this.map.addTilesetImage("GroundTileB", "GroundTileB");
+		this.map.addTilesetImage("GroundTileEnd1", "GroundTileEnd1");
+		this.map.addTilesetImage("GroundTileEnd2", "GroundTileEnd2");
+		this.map.addTilesetImage("GroundTileBigEnd1", "GroundTileBigEnd1");
+		this.map.addTilesetImage("GroundTileBigEnd2", "GroundTileBigEnd2");
 
-		plat = platforms.create(400,600, "tileGround2");
-		plat.body.allowGravity = false;
-		plat.body.immovable = true;
-		
-		plat = platforms.create(800,600, "tileGround2");
-		plat.body.allowGravity = false;
-		plat.body.immovable = true;
-		
-		plat = platforms.create(1200,600, "tileGround1");
-		plat.body.allowGravity = false;
-		plat.body.immovable = true;
 
+		this.layers.pilars = this.map.createLayer("Pilars");
+		this.layers.ground = this.map.createLayer("Ground");
 		
+		this.layers.ground.resizeWorld();
+		this.layers.pilars.resizeWorld();
+
 
 
 	}
