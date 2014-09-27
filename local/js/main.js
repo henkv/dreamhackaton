@@ -18,7 +18,6 @@ function create() {
 	createServer();
 
 
-
 }
  
 function update() {
