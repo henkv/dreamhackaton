@@ -7,7 +7,9 @@ function Player(id, name){
 	this.reach = 20;
 	this.maxVelocity = 750;
 
-	characters[this.id] = {};
+	characters[this.id] = {
+		running: false
+	};
 	characters[this.id]["sprite"] = {};
 	//game.add.sprite(0,0,'char');
 
@@ -43,6 +45,7 @@ Player.prototype.run = function(){
 Player.prototype.move = function(x){
 	var sprite = characters[this.id]["sprite"];
 	if(x != 0){
+		characters[this.id].running = true;
 		if(x > 0){
 			if(!this.facing){
 				sprite.loadTexture('char', 0, false);
@@ -62,10 +65,10 @@ Player.prototype.move = function(x){
 
 		sprite.body.velocity.x = Math.floor(this.maxVelocity*x);
 	}else{
+		characters[this.id].running = false;
 		sprite.loadTexture('charIdle', 0, false);
 		sprite.play("idle");
 		this.facing = true;
-		sprite.body.velocity.x = 0;
 	}
 }
 
@@ -114,7 +117,7 @@ Player.prototype.smash = function(){
 
 			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
-				characters[c].sprite.body.velocity.x = 500;
+				characters[c].sprite.body.velocity.x = 1e3;
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
@@ -144,11 +147,12 @@ Player.prototype.getId = function(){
 
 
 var friction = function(id) {
+	var running = characters[id].running;
 	var sprite = characters[id]["sprite"];
 	var vel = sprite.body.velocity;
-	if (vel.y === 0 && vel.x > 0) {
+	if (vel.y === 0 && vel.x > 0 && !running) {
 		characters[id].sprite.body.velocity.x -= Math.min(10, Math.abs(vel.x));
-	} else if (vel.y === 0 && vel.x < 0) {
+	} else if (vel.y === 0 && vel.x < 0 && !running) {
 		characters[id].sprite.body.velocity.x += Math.min(10, Math.abs(vel.x));
 	}
 
