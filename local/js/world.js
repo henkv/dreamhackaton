@@ -1,7 +1,7 @@
 var world = {};
  
 world.preload = function() {
-	game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.JSON)
+	game.load.tilemap("map","assets/arena.json", null, Phaser.Tilemap.TILED_JSON)
 	game.load.image('tiles', 'assets/AllGroundTiles.png');
 	game.load.image('sky', "assets/Sky.png");	
 }
@@ -15,7 +15,7 @@ var player;
 world.create = function() {
 	bg = game.add.sprite(0,0,"sky");
 
-	map = game.add.tilemap('map', 22, 8);
+	map = game.add.tilemap('map');
 
 	map.addTilesetImage("AllGroundTiles", "tiles");
 
