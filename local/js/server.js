@@ -33,7 +33,7 @@ io.on("connection", function(socket) {
 	})
 
 	socket.on("disconnect", function() {
-		player.remove(id);
+		player.destroy(id);
 	})
 });
 
