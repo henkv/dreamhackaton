@@ -114,7 +114,7 @@ Player.prototype.smash = function(){
 
 			if ( DZS < TZE  && DZE > TZS && c !== this.id  /*dont hit yourself stupids*/) {
 				characters[c]["name"]["text"] = "Victim";
-				characters[c].sprite.kill();
+				characters[c].sprite.velocity.x = 500;
 				// var sPoint = {"x": x+inset+(body/2), "y": (y+(height/2))};
 				// var tPoint = {"x": characters[c]["x"]+inset+(body/2), "y": (characters[c]["y"]+(height/2)) };
 				// var angle = angleTo(tPoint,sPoint);
