@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 560, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(2256, 1300, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
  
 function preload() {
 
@@ -16,10 +16,25 @@ function create() {
 
 	player.make("asd");
 
-
 	createServer();
+
+	game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+	game.input.onDown.add(gofull, this);
 }
  
+function gofull() {
+
+    if (game.scale.isFullScreen)
+    {
+        game.scale.stopFullScreen();
+    }
+    else
+    {
+        game.scale.startFullScreen(false);
+    }
+
+}
+
 function update() {
 	player.update();
 	//world.update();
