@@ -10,7 +10,7 @@ console.log("serverUp");
 
 function makeId () {
   return Math.random().toString(36).substr(2, 6);
-};
+}
 
 io.on("connection", function(socket) {
 	var id = makeId();
